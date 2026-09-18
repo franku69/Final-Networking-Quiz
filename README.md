@@ -1,4 +1,4 @@
-# Packet Quest — CS111 GitHub Pages + Live Teacher CRM
+# Packet Quest 
 
 This repository is the GitHub-ready version of **Packet Quest: Networking and the Internet**.
 
