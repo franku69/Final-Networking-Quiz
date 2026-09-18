@@ -1,0 +1,48 @@
+name: Validate Packet Quest
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: packet-quest-validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Verify required GitHub Pages files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f docs/index.html
+          test -f docs/teacher/index.html
+          test -f docs/.nojekyll
+          test -f docs/config.js
+          test -f backend/server.py
+          test -f backend/questions.enc
+          test -f render.yaml
+          if grep -RIl --exclude='*.md' --exclude='*.txt' 'PACKET_TEACHER_KEY=' docs backend/questions.enc 2>/dev/null; then
+            echo 'Potential secret leaked into public files.' >&2
+            exit 1
+          fi
+      - name: Check JavaScript syntax
+        run: |
+          node --check docs/assets/core.js
+          node --check docs/assets/api.js
+          node --check docs/assets/audio.js
+          node --check docs/assets/student.js
+          node --check docs/assets/teacher.js
+          node --check docs/config.js
+      - name: Check Python syntax
+        run: python3 -m py_compile backend/server.py backend/tunnel_launcher.py

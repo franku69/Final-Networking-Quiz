@@ -1,0 +1,8 @@
+STUDENT QUIZ
+https://franku69.github.io/Networking-Quiz/
+
+TEACHER CRM
+https://franku69.github.io/Networking-Quiz/teacher/
+
+FIRST-TIME PAGES SETTING
+GitHub repository -> Settings -> Pages -> Deploy from a branch -> main -> /docs -> Save

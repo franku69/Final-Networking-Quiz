@@ -1,0 +1,16 @@
+PACKET QUEST — GITHUB UPLOAD CHECKLIST
+
+[ ] Upload Packet_Quest_GitHub_Ready contents to the repo
+[ ] DO NOT upload PRIVATE_PACKET_QUEST_SECRETS.txt
+[ ] GitHub Settings -> Pages -> Source: Deploy from a branch
+[ ] Branch: main | Folder: /docs | Save
+[ ] Wait for the GitHub Pages deployment to finish
+[ ] Confirm Validate Packet Quest is green in Actions
+[ ] Deploy backend and add PACKET_BANK_KEY + PACKET_TEACHER_KEY as private environment variables
+[ ] Open YOUR-PAGES-URL/teacher/
+[ ] Pair teacher CRM with backend HTTPS URL
+[ ] Sign in with private teacher key
+[ ] Create TEST room
+[ ] Copy room link and test on a real phone using mobile data
+[ ] Confirm name, progress, submit, final score in CRM
+[ ] Create actual class room only after test succeeds

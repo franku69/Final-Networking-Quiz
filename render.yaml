@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: packet-quest-cs111-live
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python backend/server.py --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: PACKET_BANK_KEY
+        sync: false
+      - key: PACKET_TEACHER_KEY
+        sync: false
+      - key: PACKET_ALLOW_PAGES_ORIGINS
+        value: "1"
+      - key: PACKET_DATA_DIR
+        value: /var/data
+    disk:
+      name: packet-quest-data
+      mountPath: /var/data
+      sizeGB: 1

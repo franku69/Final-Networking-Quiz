@@ -1,0 +1,14 @@
+backend/runtime/
+backend/.env.local
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+exports/
+.DS_Store
+__pycache__/
+*.pyc
+PRIVATE_PACKET_QUEST_SECRETS.txt
+*PACKET_QUEST_SECRETS*.txt
+.env
+.env.*
+!backend/.env.example
